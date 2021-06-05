@@ -3,14 +3,14 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet } from "react-native";
 import { Button, Text, Image } from "react-native-elements";
 import { View } from "react-native";
-import { ShakeEventExpo } from "../utils/ShakeEvent";
+// import { ShakeEventExpo } from "../utils/ShakeEvent";
 // import RNShake from "react-native-shake";
 export default function ShakeScreen() {
   useEffect(() => {
-    ShakeEventExpo.addListener(() => {
-      //add your code here
-      alert("Shake Shake Shake");
-    });
+    // ShakeEventExpo.addListener(() => {
+    //   //add your code here
+    //   alert("Shake Shake Shake");
+    // });
   }, []);
   return (
     <View style={styles.rootContainer}>
