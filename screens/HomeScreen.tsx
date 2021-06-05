@@ -1,30 +1,50 @@
 import React, { useState } from "react";
 import { StyleSheet } from "react-native";
-
+import * as Animatable from "react-native-animatable";
 import { Button, Text } from "react-native-elements";
 import { View } from "react-native";
 
 import MusicPlayer from "../components/MusicPlayer";
 
+const delay = 800;
 export default function HomeScreen({ navigation }: { navigation: any }) {
   return (
     <View style={styles.homeContainer}>
-      <View style={styles.musicPlayerContainer}>
+      <Animatable.View
+        animation="rotate"
+        iterationCount="infinite"
+        easing="linear"
+        duration={2000}
+        style={styles.musicPlayerContainer}
+      >
         <MusicPlayer />
-      </View>
-      <View style={styles.textContainer}>
-        <Text style={styles.textSlogn}>
-          摇一摇 {"\n"}获取你的 {"\n"}专属奶茶
-        </Text>
-      </View>
-      <Button
-        buttonStyle={styles.startButton}
-        containerStyle={styles.startButtonContanier}
-        title="点击开始"
-        onPress={() => navigation.navigate("Shake")}
-      />
+      </Animatable.View>
+      <AnimatedTexts />
+      <Animatable.View animation="fadeInUpBig" delay={3 * delay}>
+        <Button
+          buttonStyle={styles.startButton}
+          containerStyle={styles.startButtonContanier}
+          title="点击开始"
+          onPress={() => navigation.navigate("Shake")}
+        />
+      </Animatable.View>
     </View>
   );
+}
+
+function AnimatedTexts() {
+  const texts = ["摇一摇", "获取你的", "专属奶茶"];
+  const animatedTexts = texts.map((text, index) => (
+    <Animatable.Text
+      animation="fadeInUp"
+      style={styles.textSlogn}
+      delay={index * delay}
+      key={text}
+    >
+      {text}
+    </Animatable.Text>
+  ));
+  return <View style={styles.textContainer}>{animatedTexts}</View>;
 }
 
 const styles = StyleSheet.create({
@@ -63,7 +83,7 @@ const styles = StyleSheet.create({
   },
   musicPlayerContainer: {
     position: "absolute",
-    left: 301,
+    left: 320,
     top: 52,
   },
 });
