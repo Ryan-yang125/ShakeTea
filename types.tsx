@@ -6,10 +6,12 @@
 export type RootStackParamList = {
   Root: undefined;
   NotFound: undefined;
+  Shake: undefined;
+  ShakeDetails: undefined;
 };
 
 export type BottomTabParamList = {
-  TabOne: undefined;
+  "奶茶占卜——解决你的选择困难": undefined;
   TabTwo: undefined;
 };
 
